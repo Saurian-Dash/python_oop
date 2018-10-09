@@ -57,14 +57,14 @@ class Person(User):
                email)
 
 
-aeon = Person.from_string('Aeon,Calcos,37,M,Spartan,aeonlizard@yahoo.com')
+person_01 = Person.from_string('Joe,Bloggs,47,M,British,joebloggs@yahoo.com')
 
 print(User.is_workday(dt.date(2017,1,1)))
 
 
 class Employee:
 
-    company = 'secretescapes'
+    company = 'omni_consumer_products'
     no_of_employees = 0
     raise_amount    = 1.04
 
@@ -134,7 +134,7 @@ class Employee:
 
     def jill_sandwich(self):
 
-        print('Oh FFS, does Barry tell everyone that story?')
+        print('OMG, does Barry tell everyone that story?')
   
 
     def __repr__(self):
@@ -157,8 +157,8 @@ Employee.set_raise_amount(1.06)
 
 print(Employee.raise_amount)
 
-Employee.from_string('Aeon,Calcos,70000', ',')
-Employee.from_string('Scutes,Ignis,40000', ',')
+Employee.from_string('Jolyne,Kujo,70000', ',')
+Employee.from_string('Hermes,Costello,40000', ',')
 
 
 class Developer(Employee):
@@ -209,9 +209,9 @@ class Manager(Employee):
             print('-->', e)
 
 
-dev_01 = Developer('Bio','Rex',56000,'Python')
+dev_01 = Developer('Jotaro','Kujo',56000,'Python')
 emp_01 = Employee('Enrico', 'Pucci', 64000)
-emp_02 = Employee('Vanilla', 'Ice', 42000)
+emp_02 = Employee('Weather', 'Report', 42000)
 mng_01 = Manager('DIO', 'Brando', 999999999, [dev_01])
 
 print(dev_01)
@@ -287,7 +287,7 @@ class Member:
         return f'User: {self.full_name} ({self.age} years old)'
 
 
-mem_01 = Member.from_string('Saur,Dash,40', ',')
+mem_01 = Member.from_string('Foo,Fighters,40', ',')
 
 print(mem_01)
 
@@ -328,3 +328,28 @@ thing.do_something()
 print(D.__mro__)
 print(D.mro())
 help(D)
+
+class GrumpyDict(dict):
+
+    def __repr__(self):
+
+        print('NONE OF YOUR BUSINESS!')
+        return super().__repr__()
+
+    def __missing__(self, key):
+
+        print(f'WHATEVER {key} IS, IT\'S NOT HERE')
+
+    def __setitem__(self, key, value):
+
+        print('OMG WHY ARE YOU BOTHERING ME!?')
+        super().__setitem__(key, value)
+    
+    
+
+test_data = GrumpyDict({'name': 'Aeon', 'age': 37})
+
+print(test_data)
+print(test_data['location'])
+test_data['city'] = 'Tokyo'
+print(test_data)
