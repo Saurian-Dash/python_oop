@@ -17,3 +17,6 @@ print(mul(8))
 my_list = [1,2,3,4,5,6,7,8,9]
 
 multi = map(lambda n: n * n, my_list)
+
+# multi is an iterable which can be read once, cast to a list to retrive all items:
+print(list(multi))
